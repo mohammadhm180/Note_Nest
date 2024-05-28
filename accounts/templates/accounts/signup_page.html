@@ -1,0 +1,25 @@
+{% extends 'shared/base_layout.html' %}
+
+{% block title %}صفحه ثبت نام{% endblock %}
+{% block content %}
+        <div class="container">
+        <form action="{% url 'signup_page' %}" method="post">
+            {% csrf_token %}
+
+            {{ user_form.name.label_tag }}
+            {{ user_form.name }}
+            {{ user_form.name.errors }}
+            {{ user_form.email.label_tag }}
+            {{ user_form.email }}
+            {{ user_form.email.errors }}
+            {{ user_form.password.label_tag }}
+            {{ user_form.password }}
+            {{ user_form.password.errors }}
+            {{ user_form.repeated_password.label_tag }}
+            {{ user_form.repeated_password }}
+            {{ user_form.repeated_password.errors }}
+
+            <button type="submit">ثبت نام</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تایید ایمیل</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>به سایت ما خوش آمدید!</h2>
+        <p>ممنون بابت ثبت نام. جهت فعالسازی حساب خود روی لینک زیر کلیک کنید.</p>
+        <a href="http://localhost:8000{% url 'activate_email' email_active_code=email_active_code %}" class="button">فعالسازی حساب</a>
+        <p>اگر شما ثبت نامی با این حساب نکردید لطفا این ایمیل را نادیده بگیرید.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'shared/base_layout.html' %}
+{% load static %}
+
+{% block title %}Signin Page{% endblock %}
+{% block content %}
+
+    <div class="container">
+    {% if request.user.is_authenticated %}
+            <h1>به یادداشت های خود خوش آمدید.</h1>
+            <select id="category-select">
+        <option value="0">تمام دسته ها</option>
+  {% for category in categories %}
+    <option value="{{ category.id }}">{{ category.title }}</option>
+  {% endfor %}
+</select>
+
+
+<div id="notes-list">
+چ</div>
+
+    <a href="{% url 'create_note' %}" class="create-note-button">ایجاد یادداشت جدید</a>
+    <a href="{% url 'create_category' %}" class="create-note-button">ایجاد دسته بندی جدید</a>
+    {% else %}
+        <h1 style="margin-bottom: 20px">به سایت Note Nest خوش آمدید.</h1>
+        <h2 style="margin-bottom: 20px">جایی برای ذخیره یادداشت ها.</h2>
+        <h3 style="margin-bottom: 20px">برای دیدن یادداشت ها <a href="{% url 'signin_page' %}" style="color: #007bff">وارد</a> سایت شوید.</h3>
+        <h3>اگر حسابی ندارید همین الان یک <a href="{% url 'signup_page' %}" style="color: #0056b3">حساب ایجاد</a> کنید.</h3>
+    {% endif %}
+</div>
+
+    <script src="/static/js/custom.js"></script>
+{% endblock %}
+

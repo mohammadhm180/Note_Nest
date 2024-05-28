@@ -1,0 +1,14 @@
+{% extends 'shared/base_layout.html' %}
+{% block title %}ایجاد دسته بندی{% endblock %}
+{% block content %}
+    <div class="container">
+
+        <form action="{% url 'create_category' %}" method="post">
+            {% csrf_token %}
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+            <button type="submit">ذخیره دسته بندی</button>
+        </form>
+    </div>
+{% endblock %}

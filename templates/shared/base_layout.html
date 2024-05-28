@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}Note Nest{% endblock %}</title>
+</head>
+<body>
+    <header class="head_content">
+        <a href="{% url "home_page" %}">
+            <div class="logo">
+                <img src="/static/images/logo.jpeg" alt="Site Icon">
+                <h1 >Note Nest</h1>
+            </div>
+        </a>
+
+        <div class="auth-options">
+            {% if request.user.is_authenticated %}
+                <h3 style="margin-right: 10px">{{ request.user.first_name }}</h3>
+                <a href="{% url 'sign_out_page' %}">خروج</a>
+                <a href="{% url 'profile_page' %}">پنل کاربری</a>
+                <a href="{% url 'home_page' %}">خانه</a>
+            {% else %}
+             <a href="{% url 'signup_page' %}">ثبت نام</a>
+            <a href="{% url 'signin_page' %}">وروود</a>
+            {% endif %}
+
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="about-us">
+            <h2>درباره ما</h2>
+            <p>توضیحات مربوط به سایت.</p>
+        </div>
+        <div class="policies">
+            <h2>قوانین</h2>
+            <ul>
+                <li><a href="#">قوانین مربوط به حریم شخصی</a></li>
+                <li><a href="#">قواید استفاده</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'shared/base_layout.html' %}
+{% block title %}صفحه ورود{% endblock %}
+{% block content %}
+    <div class="container">
+        <form action="{% url 'signin_page' %}" method="post">
+            {% csrf_token %}
+            {{ user_form.email.label_tag }}
+            {{ user_form.email }}
+            {{ user_form.email.errors }}
+            {{ user_form.password.label_tag }}
+            {{ user_form.password }}
+            {{ user_form.password.errors }}
+
+            <button type="submit">ورود</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'shared/base_layout.html' %}
+{% load static %}
+{% block title %}Signin Page{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>پروفایل کاربر:</h2>
+        <img src="{% if user.avatar %}{{ user.avatar.url }}{% else %}{% static 'images/defaultAvatar.png' %}{% endif %}" alt="Profile Photo" style="max-width: 100%; max-height: 200px;">
+
+        <form action="{% url 'profile_page' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.avatar.label_tag}}
+            {{ form.avatar}}
+            {{ form.avatar.errors}}
+            {{ form.name.label_tag}}
+            {{ form.name}}
+            {{ form.name.errors}}
+
+            <button type="submit">ثبت تغییرات</button>
+        </form>
+    </div>
+{% endblock %}

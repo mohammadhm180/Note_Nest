@@ -1,0 +1,13 @@
+{% extends 'shared/base_layout.html' %}
+{% block title %}Signin Page{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.text }}</p>
+        <p style="color: #9b2222">تاریخ ایجاد: {{ note.create_date }}</p>
+        <h4>دسته بندی : {{ note.category }}</h4>
+
+        <a style="color: #10055d;font-weight: bold;margin-left: 15px" href="{% url 'edit_note' note.id %} ">ویرایش یادداشت</a>
+        <a href="{% url 'delete_note' note.id %}" style="color: red;font-weight: bold">حذف یادداشت</a>
+    </div>
+{% endblock %}
